@@ -27,10 +27,11 @@ def get_products():
     return product_list
 
 def get_branch(code):
+    print(type(code))
     branches_coll = products_db["branches"]
 
-    branch = branches_coll.find_one({"code": code})
-
+    branch = branches_coll.find_one({"code": str(code)})
+    print(branch)
     return branch
 
 def get_branches():
@@ -50,7 +51,7 @@ def get_user(username):
 
 def create_order(order):
     orders_coll = order_management_db['orders']
-    orders_coll.insert(order)
+    orders_coll.insert_one(order)
 
 def get_past_orders(username):
     orders_coll = order_management_db['orders']
