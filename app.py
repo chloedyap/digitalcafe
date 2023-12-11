@@ -45,6 +45,7 @@ def branches():
 @app.route('/branch_details/<int:code>')
 def branch_details(code):
     branch = db.get_branch(code)
+    print(branch)
     return render_template('branchdetails.html', branch=branch)
 
 @app.route('/aboutus')
